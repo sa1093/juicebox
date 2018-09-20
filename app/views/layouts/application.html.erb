@@ -1,15 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StartApp</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Startapp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- jquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     </head>
 
   <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Top</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Information</a>
+      </li>
+      <% if user_signed_in? %>
+<li class="nav-item active">
+<%= link_to 'プロフィール変更', edit_user_registration_path %>
+</li>
+<li class="nav-item active">
+<%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+</li>
+<% else %>
+<%= link_to 'サインアップ', new_user_registration_path %>
+<%= link_to 'ログイン', new_user_session_path %>
+<% end %>
+    </ul>
+  </div>
+</nav>
+<p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+<div class="container">
+<!--スライダー-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+<div class='slick' style="padding: 50px;">
+<div class='slick-item'>
+<div><h3><a href="#"><img src="top1.jpg" width="100%" height="100%"></a></h3></div>
+<div><h3><a href="#"><img src="top2.jpg" width="100%" height="100%"></a></h3></div>
+<div><h3><a href="#"><img src="top3.jpg" width="100%" height="100%"></a></h3></div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.js"></script>
+
+
+<!--/スライダー-->
+</div>
+  <div class="container">
+  <div class="row">
     <%= yield %>
+    </div>
+  </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
   </body>
 </html>
