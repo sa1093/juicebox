@@ -69,6 +69,6 @@ class JuicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def juice_params
-      params.require(:juice).permit(:name, :capacity, :price)
+      params.require(:juice).permit(:name, :capacity, :price, :image)
     end
 end
