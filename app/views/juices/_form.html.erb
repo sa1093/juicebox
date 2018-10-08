@@ -13,24 +13,25 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :capacity %>
-    <%= form.number_field :capacity %>
+    <%= form.number_field :capacity, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :image,"画像" %>
+    <br>
     <%= form.file_field :image %>
   </div>
-
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>

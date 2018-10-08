@@ -10,6 +10,10 @@ class JuicesController < ApplicationController
   # GET /juices/1
   # GET /juices/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /juices/new

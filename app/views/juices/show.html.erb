@@ -16,6 +16,18 @@
   <%= @juice.price %>
 </p>
 
+<h1></h1>
+<%= form_tag(url_for(:action => 'show'), :remote => true) do %>
+  <!-- MEMO:unless=ifの逆バージョン -->
+  <% unless Juice.where(id: 1) %>
+  <%= submit_tag "👍" %>
+  <% else %>
+  👍
+  <% end %>
+<% end %>
+
+<%= current_user.email %>
+
 <%= link_to 'Edit', edit_juice_path(@juice) %> |
 <%= link_to 'Back', juices_path %>
 </div>
