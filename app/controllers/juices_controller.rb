@@ -4,12 +4,23 @@ class JuicesController < ApplicationController
   # GET /juices
   # GET /juices.json
   def index
-    @juices = Juice.all
+    if params[:hoge]
+        @juices = Juice.where(name: params[:hoge])
+      else
+        # @juices = Juice.find_by_sql("SELECT * FROM juices WHERE id = 2")
+        @juices = Juice.all
+    end
+    
   end
 
   # GET /juices/1
   # GET /juices/1.json
   def show
+    if params[:user_id] && params[:juice_id]
+      data = Post.new(user_id: params[:user_id], juice_id: params[:juice_id])
+      data.save
+    end
+
     respond_to do |format|
       format.html
       format.js
@@ -73,6 +84,6 @@ class JuicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def juice_params
-      params.require(:juice).permit(:name, :capacity, :price, :image)
+      params.require(:juice).permit(:name, :capacity, :price, :image, :user_id, :juice_id)
     end
 end

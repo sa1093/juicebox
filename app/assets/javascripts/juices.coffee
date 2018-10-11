@@ -9,7 +9,7 @@
 #     alert 2
 
 $ ->
-  $('h1').css('color', 'red')
+  $('h1').css('font-family', 'Impact')
 
   $('head').append('<style>body {display:none;}')
   $('body').delay(1200).fadeIn(1200)

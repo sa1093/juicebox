@@ -16,15 +16,17 @@
   <%= @juice.price %>
 </p>
 
-<h1></h1>
 <%= form_tag(url_for(:action => 'show'), :remote => true) do %>
-  <!-- MEMO:unless=ifの逆バージョン -->
-  <% unless Juice.where(id: 1) %>
-  <%= submit_tag "👍" %>
+<%= hidden_field_tag :user_id, current_user.id %>
+<%= hidden_field_tag :juice_id, @juice.id %>
+<!-- unless: いいねされてなかったらボタン表示 -->
+  　　<% unless Post.find_by(user_id: current_user.id, juice_id: @juice.id) %>
+  <h1><%= submit_tag "👍" %></h1>
   <% else %>
-  👍
+  <h1>👍</h1>
+  　　<% end %>
+  
   <% end %>
-<% end %>
 
 <%= current_user.email %>
 
